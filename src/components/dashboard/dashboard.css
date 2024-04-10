@@ -1,0 +1,5 @@
+.dashboard-container { 
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 380px 1fr;
+}
