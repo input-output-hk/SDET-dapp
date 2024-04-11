@@ -1189,7 +1189,7 @@
     ts-log "^2.2.4"
     typeorm "^0.3.15"
 
-"@cardano-sdk/core@*", "@cardano-sdk/core@workspace:~", "@cardano-sdk/core@~0.30.0":
+"@cardano-sdk/core@*", "@cardano-sdk/core@~0.30.0":
   version "0.30.0"
   resolved "https://registry.yarnpkg.com/@cardano-sdk/core/-/core-0.30.0.tgz#53fcbef6c64f3d973b89caa4fd3e97c3bb21646c"
   integrity sha512-0VO2a1gzgKcaOEIjSJfSF3MQ2Mh29lX0ia4M72YHk6QTDHa7WmzCFKVcXDKUo6G6bwmFpcByStXmosjhcj2UEA==
@@ -1284,7 +1284,7 @@
     lodash "^4.17.21"
     ts-custom-error "^3.2.0"
 
-"@cardano-sdk/key-management@*", "@cardano-sdk/key-management@workspace:~", "@cardano-sdk/key-management@~0.20.1":
+"@cardano-sdk/key-management@*", "@cardano-sdk/key-management@~0.20.1":
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/@cardano-sdk/key-management/-/key-management-0.20.1.tgz#ff8fbda156ff962af0f469bfdfebb6b790923220"
   integrity sha512-y3KUxZj+cd60VT8VuPDvx90rkLTv4/aV4kq/21DnEKkMxULMwHs4UVlMyg5G/B4IEU2I0i35rytvoZ7cbwBaAQ==
@@ -1402,7 +1402,7 @@
     backoff-rxjs "^7.0.0"
     rxjs "^7.4.0"
 
-"@cardano-sdk/util@*", "@cardano-sdk/util@workspace:~", "@cardano-sdk/util@~0.15.0":
+"@cardano-sdk/util@*", "@cardano-sdk/util@~0.15.0":
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/@cardano-sdk/util/-/util-0.15.0.tgz#acc36387e63a5b91b90f4580657cabf0e48def7f"
   integrity sha512-OdowOpDwgjsbCuuf/yLveTDZ6/QWVelJahvbJa4lINJ01uG5tploygvmbst3vos7MYOdHBKdEsYzRS2bZo1xZQ==
@@ -1414,7 +1414,7 @@
     ts-log "^2.2.4"
     type-fest "^2.19.0"
 
-"@cardano-sdk/wallet@*", "@cardano-sdk/wallet@workspace:~":
+"@cardano-sdk/wallet@*":
   version "0.36.0"
   resolved "https://registry.yarnpkg.com/@cardano-sdk/wallet/-/wallet-0.36.0.tgz#f5e1d969cc319d3855d0d6a80b5dab043f338149"
   integrity sha512-UZW18/4n9VvuLaXldE6VjdrjWX/GmXB//EbsrC9kZzKWi54O+YsVMZf8Ph2rDRdz6c82twoPgkI1Gx209TA6Pw==

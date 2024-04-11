@@ -4,6 +4,7 @@ import {
   sendSeveralAssets,
   singleDelegation,
   singleUndelegation,
+  buildTxWithValidityInterval,
 } from "../../features";
 import { useEffect, useState } from "preact/hooks";
 
@@ -28,7 +29,10 @@ export const WalletActions = () => {
     return null;
   }
 
-  const handleClick = async (
+  const handleClick = async ({
+    action,
+    title,
+  }: {
     action: {
       ({ connectedWallet }: { connectedWallet: ObservableWallet }): Promise<{
         hash: string;
@@ -37,9 +41,9 @@ export const WalletActions = () => {
       (arg0: { connectedWallet: ObservableWallet }):
         | PromiseLike<{ hash: any; txId: any }>
         | { hash: any; txId: any };
-    },
-    title: string
-  ) => {
+    };
+    title: string;
+  }) => {
     if (!storeState.wallet) {
       return null;
     }
@@ -54,32 +58,88 @@ export const WalletActions = () => {
     });
   };
 
+  const handleValidityInterval = async ({
+    options,
+    title,
+  }: {
+    options: boolean;
+    title: string;
+  }) => {
+    if (!storeState.wallet) {
+      return null;
+    }
+    const { hash, txId } = await buildTxWithValidityInterval({
+      connectedWallet: storeState.wallet,
+      expired: options,
+    });
+
+    connectorStore.log({
+      hash,
+      title,
+      txId,
+    });
+  };
+
   return (
     <div class="actions-container">
       <h3>Wallet actions</h3>
       <button
         class="wallet-button"
-        onClick={() => handleClick(sendCoins, "Send coins")}
+        onClick={() => handleClick({ action: sendCoins, title: "Send coins" })}
       >
         Send coins
       </button>
       <button
         class="wallet-button"
-        onClick={() => handleClick(sendSeveralAssets, "Send several assets")}
+        onClick={() =>
+          handleClick({
+            action: sendSeveralAssets,
+            title: "Send several assets",
+          })
+        }
       >
         Send several assets
       </button>
       <button
         class="wallet-button"
-        onClick={() => handleClick(singleDelegation, "Single delegation")}
+        onClick={() =>
+          handleClick({ action: singleDelegation, title: "Single delegation" })
+        }
       >
         Single delegation
       </button>
       <button
         class="wallet-button"
-        onClick={() => handleClick(singleUndelegation, "Single undelegation")}
+        onClick={() =>
+          handleClick({
+            action: singleUndelegation,
+            title: "Single undelegation",
+          })
+        }
       >
         Single undelegation
+      </button>
+      <button
+        class="wallet-button"
+        onClick={() =>
+          handleValidityInterval({
+            options: true,
+            title: "Tx with expired validity interval",
+          })
+        }
+      >
+        Send Tx with expired validity interval
+      </button>
+      <button
+        class="wallet-button"
+        onClick={() =>
+          handleValidityInterval({
+            options: false,
+            title: "Tx with unlimited validity interval",
+          })
+        }
+      >
+        Send Tx with unlimited validity interval
       </button>
     </div>
   );
