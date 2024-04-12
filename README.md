@@ -4,9 +4,6 @@ SDET dapp for the purpose of testing the Cardano-JS-SDK connector API.
 
 If you are trying to build or see how a transaction is built from an application that allows users to make transactions such as delegation or undelegation, or the sending of tokens or assets in the Cardano chain through the Cardano-JS-SDK, this repo should show an example of it.
 
-I would like to see some information about what this is, what’s its purpose, etc.
-I would first focus on stuff related to working on this repo like dev commands, and as one of latest section I would put this Linking guide
-
 ## Structure
 
 ```
@@ -60,3 +57,11 @@ Build:
 ```console
 yarn build
 ```
+
+## Browser set up
+
+In order to use this application for now we need to start the Browser as follows:
+
+- start chrome as: `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome —disable-web-security —user-data-dir=tmp` to open Chrome or : `open -na "Google Chrome" --args --disable-web-security --user-data-dir=tmp`
+
+You can also use any other browser as long as you open with: --disable-web-security --user-data-dir=tmp (make sure if you restart it that you do it from all closed windows, and keep no cache enabled)
