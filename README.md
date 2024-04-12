@@ -42,7 +42,7 @@ In order to set it up and develop, clone the repository and follow the commands 
 
 Install the packages:
 
-```console
+```
 yarn
 ```
 
