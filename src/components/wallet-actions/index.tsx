@@ -1,11 +1,18 @@
-import { Store, connectorStore } from '../../state/store';
-import { sendCoins, sendSeveralAssets, singleDelegation, singleUndelegation } from '../../features';
-import { useEffect, useState } from 'preact/hooks';
+import { Store, connectorStore } from "../../state/store";
+import {
+  sendCoins,
+  sendSeveralAssets,
+  singleDelegation,
+  singleUndelegation,
+} from "../../features";
+import { useEffect, useState } from "preact/hooks";
 
-import './wallet-actions.css';
+import "./wallet-actions.css";
 
 export const WalletActions = () => {
-  const [storeState, setStoreState] = useState<Store>(connectorStore.initialState);
+  const [storeState, setStoreState] = useState<Store>(
+    connectorStore.initialState
+  );
 
   useEffect(() => {
     const subscription = connectorStore.subscribe(setStoreState);
@@ -25,11 +32,13 @@ export const WalletActions = () => {
       return null;
     }
 
-    const { hash, txId } = await sendCoins({ connectedWallet: storeState.wallet });
+    const { hash, txId } = await sendCoins({
+      connectedWallet: storeState.wallet,
+    });
     connectorStore.log({
       hash,
-      title: 'Send coins',
-      txId
+      title: "Send coins",
+      txId,
     });
   };
 
@@ -38,11 +47,13 @@ export const WalletActions = () => {
       return null;
     }
 
-    const { hash, txId } = await sendSeveralAssets({ connectedWallet: storeState.wallet });
+    const { hash, txId } = await sendSeveralAssets({
+      connectedWallet: storeState.wallet,
+    });
     connectorStore.log({
       hash,
-      title: 'Send several assets',
-      txId
+      title: "Send several assets",
+      txId,
     });
   };
 
@@ -51,11 +62,13 @@ export const WalletActions = () => {
       return null;
     }
 
-    const { hash, txId } = await singleDelegation({ connectedWallet: storeState.wallet });
+    const { hash, txId } = await singleDelegation({
+      connectedWallet: storeState.wallet,
+    });
     connectorStore.log({
       hash,
-      title: 'Single delegation',
-      txId
+      title: "Single delegation",
+      txId,
     });
   };
 
@@ -64,27 +77,38 @@ export const WalletActions = () => {
       return null;
     }
 
-    const { hash, txId } = await singleUndelegation({ connectedWallet: storeState.wallet });
+    const { hash, txId } = await singleUndelegation({
+      connectedWallet: storeState.wallet,
+    });
     connectorStore.log({
       hash,
-      title: 'Single undelegation',
-      txId
+      title: "Single undelegation",
+      txId,
     });
   };
 
   return (
-    <div class="actions-container">
+    <div className="actions-container">
       <h3>Wallet actions</h3>
-      <button class="wallet-button" onClick={() => handleSendCoins()}>
+      <button className="wallet-button" onClick={() => handleSendCoins()}>
         Send coins
       </button>
-      <button class="wallet-button" onClick={() => handleSendSeveralAssets()}>
+      <button
+        className="wallet-button"
+        onClick={() => handleSendSeveralAssets()}
+      >
         Send several assets
       </button>
-      <button class="wallet-button" onClick={() => handleSingleDelegation()}>
+      <button
+        className="wallet-button"
+        onClick={() => handleSingleDelegation()}
+      >
         Single delegation
       </button>
-      <button class="wallet-button" onClick={() => handleSingleUndelegation()}>
+      <button
+        className="wallet-button"
+        onClick={() => handleSingleUndelegation()}
+      >
         Single undelegation
       </button>
     </div>

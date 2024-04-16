@@ -2,7 +2,7 @@ import "./dashboard.css";
 import { Logs, WalletActions } from "..";
 
 export const Dashboard = () => (
-  <div class="dashboard-container">
+  <div className="dashboard-container">
     <div>
       <WalletActions />
     </div>
