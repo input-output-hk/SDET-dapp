@@ -47,14 +47,17 @@ export const WalletActions = () => {
       return null;
     }
 
-    const { hash, txId } = await sendSeveralAssets({
+    const result = await sendSeveralAssets({
       connectedWallet: storeState.wallet,
     });
-    connectorStore.log({
-      hash,
-      title: "Send several assets",
-      txId,
-    });
+    if (result) {
+      const { hash, txId } = result;
+      connectorStore.log({
+        hash,
+        title: "Send several assets",
+        txId,
+      });
+    }
   };
 
   const handleSingleDelegation = async () => {
@@ -62,14 +65,18 @@ export const WalletActions = () => {
       return null;
     }
 
-    const { hash, txId } = await singleDelegation({
+    const result = await singleDelegation({
       connectedWallet: storeState.wallet,
     });
-    connectorStore.log({
-      hash,
-      title: "Single delegation",
-      txId,
-    });
+
+    if (result) {
+      const { hash, txId } = result;
+      connectorStore.log({
+        hash,
+        title: "Single delegation",
+        txId,
+      });
+    }
   };
 
   const handleSingleUndelegation = async () => {
@@ -77,14 +84,18 @@ export const WalletActions = () => {
       return null;
     }
 
-    const { hash, txId } = await singleUndelegation({
+    const result = await singleUndelegation({
       connectedWallet: storeState.wallet,
     });
-    connectorStore.log({
-      hash,
-      title: "Single undelegation",
-      txId,
-    });
+
+    if (result) {
+      const { hash, txId } = result;
+      connectorStore.log({
+        hash,
+        title: "Single undelegation",
+        txId,
+      });
+    }
   };
 
   return (
