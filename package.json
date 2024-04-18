@@ -14,7 +14,7 @@
 		"@cardano-sdk/dapp-connector-client": "link:./../cardano-js-sdk/packages/dapp-connector-client",
 		"@cardano-sdk/util": "*",
 		"@cardano-sdk/util-dev": "*",
-		"@cardano-sdk/wallet": "^0.37.0",
+		"@cardano-sdk/wallet": "^0.36.0",
 		"buffer": "^6.0.3",
 		"copy-webpack-plugin": "^12.0.2",
 		"crypto-browserify": "^3.12.0",
@@ -24,7 +24,7 @@
 		"preact-render-to-string": "^6.4.1",
 		"preact-router": "^4.1.2",
 		"rollup-plugin-polyfill-node": "^0.13.0",
-		"rxjs": "^7.4.0"
+		"rxjs": "^7.5.7"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.24.4",
