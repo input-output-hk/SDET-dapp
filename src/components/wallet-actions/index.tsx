@@ -35,6 +35,7 @@ export const WalletActions = () => {
     const { hash, txId } = await sendCoins({
       connectedWallet: storeState.wallet,
     });
+
     connectorStore.log({
       hash,
       title: "Send coins",
@@ -101,25 +102,16 @@ export const WalletActions = () => {
   return (
     <div className="actions-container">
       <h3>Wallet actions</h3>
-      <button className="wallet-button" onClick={() => handleSendCoins()}>
+      <button className="wallet-button" onClick={handleSendCoins}>
         Send coins
       </button>
-      <button
-        className="wallet-button"
-        onClick={() => handleSendSeveralAssets()}
-      >
+      <button className="wallet-button" onClick={handleSendSeveralAssets}>
         Send several assets
       </button>
-      <button
-        className="wallet-button"
-        onClick={() => handleSingleDelegation()}
-      >
+      <button className="wallet-button" onClick={handleSingleDelegation}>
         Single delegation
       </button>
-      <button
-        className="wallet-button"
-        onClick={() => handleSingleUndelegation()}
-      >
+      <button className="wallet-button" onClick={handleSingleUndelegation}>
         Single undelegation
       </button>
     </div>
