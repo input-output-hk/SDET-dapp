@@ -1,36 +1,32 @@
-import { EMPTY, catchError, take, tap } from 'rxjs';
-import { ObservableWallet } from '@cardano-sdk/wallet';
-import { inspectAndSignTx } from '../utils';
-import { logger } from '@cardano-sdk/util-dev';
+import { firstValueFrom } from "rxjs";
+import { ObservableWallet } from "@cardano-sdk/wallet";
+import { inspectAndSignTx } from "../utils";
 
-export const singleUndelegation = ({
-  connectedWallet
+export const singleUndelegation = async ({
+  connectedWallet,
 }: {
   connectedWallet: ObservableWallet;
-}): Promise<{ hash: string; txId: string }> =>
-  new Promise((resolve, reject) => {
+}): Promise<{ hash: string; txId: string } | null> => {
+  if (!connectedWallet) {
+    return null;
+  }
+
+  const availableBalance = await firstValueFrom(
     connectedWallet.balance.utxo.available$
-      .pipe(
-        take(1),
-        tap(async (availableBalance) => {
-          if (availableBalance.coins === 0n) {
-            reject(new Error('Your wallet has no assets'));
-          }
+  );
 
-          if (!connectedWallet) {
-            return null;
-          }
+  if (availableBalance.coins === 0n) {
+    throw new Error("Your wallet has no assets");
+  }
 
-          const builtTx = connectedWallet.createTxBuilder().delegatePortfolio(null).build();
-          const { hash, txId } = await inspectAndSignTx({ builtTx, connectedWallet });
-
-          resolve({ hash, txId });
-        }),
-        catchError((error) => {
-          logger.error('Error fetching assets', error);
-          reject(new Error('Error fetching assets'));
-          return EMPTY;
-        })
-      )
-      .subscribe();
+  const builtTx = connectedWallet
+    .createTxBuilder()
+    .delegatePortfolio(null)
+    .build();
+  const { hash, txId } = await inspectAndSignTx({
+    builtTx,
+    connectedWallet,
   });
+
+  return { hash, txId };
+};

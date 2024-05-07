@@ -25,19 +25,19 @@ export const Logs = () => {
     storeState.addresses?.map((a) => <p>{a.address}</p>);
 
   return (
-    <div class="logs-container">
+    <div className="logs-container">
       <h3>Logs</h3>
       {storeState.addresses && storeState.balance ? (
-        <div class="logs-container-summary">
+        <div className="logs-container-summary">
           <h4>Balance: </h4>
           <p> {storeState?.balance?.coins / 1_000_000n} tADA</p>
           <h4>Addresses: </h4> {getAddresses()}
         </div>
       ) : (
-        <p class="logs-container-summary">Loading wallet details</p>
+        <p className="logs-container-summary">Loading wallet details</p>
       )}
 
-      <div class="logs-container-summary">
+      <div className="logs-container-summary">
         {storeState.log.map((entry) => (
           <>
             <h4>{entry.title}</h4>

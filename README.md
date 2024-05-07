@@ -18,16 +18,24 @@ If you are trying to build or see how a transaction is built from an application
 
 ## Development environment
 
-In order to currently work on with this repository, you have to link to your version of the `dapp-connector-client` in the `cardano-js-sdk` repo.
-So first you want to clone this repo in a folder that sits alongside the `cardano-js-sdk` and checkout the branch that contains the `dapp-connector-client`, `feat/dapp-connector-client-poc`.
+### Recommended yarn version
 
-Now you should follow the instructions in the _Linking @cardano-sdk/dapp-connector-client_.
+Version 4.1.1
+
+### Recommended node version
+
+Version 18.12.1
+
+In order to currently work on with this repository, you have to link to your version of the `dapp-connector-client` in the [`@cardano-js-sdk`](https://github.com/input-output-hk/cardano-js-sdk) repo.
+So first you want to clone this repo in a folder that sits alongside the [`@cardano-js-sdk`](https://github.com/input-output-hk/cardano-js-sdk) and checkout the branch that contains the `dapp-connector-client` unpublished package, `feat/dapp-connector-client-poc`.
+
+Now you should follow the instructions in the _Linking @cardano-js-sdk/dapp-connector-client_.
 
 ### Linking @cardano-sdk/dapp-connector-client
 
 Since this package isn't published yet, we need to link it from a local version of the package.
 
-1. Ensure a local branch is checked out of the `@cardano-sdk` package that contains the `dapp-connector-client` package.
+1. Ensure a local branch is checked out of the [`@cardano-js-sdk`](https://github.com/input-output-hk/cardano-js-sdk) package that contains the `dapp-connector-client` package.
 2. Ensure the `dapp-connector-client` is built, `yarn && yarn build`.
 3. Run `yarn link ./<path to dapp-connector-client>`.
 
@@ -60,8 +68,20 @@ yarn build
 
 ## Browser set up
 
-In order to use this application for now we need to start the Browser as follows:
+### Mac
+
+In order to use this application for now we need to start the Browser with --disable-web-security --user-data-dir=tmp (make sure if you restart it that you do it from all closed windows, and keep no cache enabled)
 
 - start chrome as: `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome —disable-web-security —user-data-dir=tmp` to open Chrome or : `open -na "Google Chrome" --args --disable-web-security --user-data-dir=tmp`
 
-You can also use any other browser as long as you open with: --disable-web-security --user-data-dir=tmp (make sure if you restart it that you do it from all closed windows, and keep no cache enabled)
+### Windows
+
+In order to use this application for now we need to start the Browser with --disable-web-security --user-data-dir=tmp (make sure if you restart it that you do it from all closed windows, and keep no cache enabled)
+
+- start chrome as: `start chrome --disable-web-security --user-data-dir=tmp`
+
+### Linux
+
+In order to use this application for now we need to start the Browser with --disable-web-security --user-data-dir=tmp (make sure if you restart it that you do it from all closed windows, and keep no cache enabled)
+
+- start chrome as: `google-chrome --disable-web-security --user-data-dir=tmp`
