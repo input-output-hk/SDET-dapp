@@ -56,28 +56,5 @@
 		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^5.0.4"
 	},
-	"packageManager": "yarn@4.1.1",
-	"resolutions": {
-		"@cardano-sdk/cardano-services": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/cardano-services",
-		"@cardano-sdk/cardano-services-client": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/cardano-services-client",
-		"@cardano-sdk/core": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/core",
-		"@cardano-sdk/crypto": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/crypto",
-		"@cardano-sdk/dapp-connector": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/dapp-connector",
-		"@cardano-sdk/e2e": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/e2e",
-		"@cardano-sdk/golden-test-generator": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/golden-test-generator",
-		"@cardano-sdk/governance": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/governance",
-		"@cardano-sdk/hardware-ledger": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/hardware-ledger",
-		"@cardano-sdk/hardware-trezor": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/hardware-trezor",
-		"@cardano-sdk/input-selection": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/input-selection",
-		"@cardano-sdk/key-management": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/key-management",
-		"@cardano-sdk/ogmios": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/ogmios",
-		"@cardano-sdk/projection": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/projection",
-		"@cardano-sdk/projection-typeorm": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/projection-typeorm",
-		"@cardano-sdk/tx-construction": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/tx-construction",
-		"@cardano-sdk/util": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/util",
-		"@cardano-sdk/util-dev": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/util-dev",
-		"@cardano-sdk/util-rxjs": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/util-rxjs",
-		"@cardano-sdk/wallet": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/wallet",
-		"@cardano-sdk/web-extension": "portal:/Users/vanessa/Documents/Projects/cardano-js-sdk/packages/web-extension"
-	}
+	"packageManager": "yarn@4.1.1"
 }
