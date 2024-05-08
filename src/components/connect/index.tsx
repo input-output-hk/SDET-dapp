@@ -40,7 +40,7 @@ const connectLace = (dependencies: ConnectWalletDependencies) => {
 
 export const Connect = () => (
   <button
-    class="connect-button"
+    className="connect-button"
     onClick={() => connectLace(connectWalletDependencies)}
   >
     Connect wallet

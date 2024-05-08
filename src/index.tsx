@@ -17,5 +17,4 @@ if (typeof window !== "undefined") {
   hydrate(<App />, document.querySelector("#app")!);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const prerender = async (data: any) => await ssr(<App {...data} />);

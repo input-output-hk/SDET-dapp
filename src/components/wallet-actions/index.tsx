@@ -29,33 +29,76 @@ export const WalletActions = () => {
     return null;
   }
 
-  const handleClick = async ({
-    action,
-    title,
-  }: {
-    action: {
-      ({ connectedWallet }: { connectedWallet: ObservableWallet }): Promise<{
-        hash: string;
-        txId: string;
-      }>;
-      (arg0: { connectedWallet: ObservableWallet }):
-        | PromiseLike<{ hash: any; txId: any }>
-        | { hash: any; txId: any };
-    };
-    title: string;
-  }) => {
+  const handleSendCoins = async () => {
     if (!storeState.wallet) {
       return null;
     }
 
-    const { hash, txId } = await action({
+    const { hash, txId } = await sendCoins({
       connectedWallet: storeState.wallet,
     });
+
     connectorStore.log({
       hash,
-      title,
+      title: "Send coins",
       txId,
     });
+  };
+
+  const handleSendSeveralAssets = async () => {
+    if (!storeState.wallet) {
+      return null;
+    }
+
+    const result = await sendSeveralAssets({
+      connectedWallet: storeState.wallet,
+    });
+    if (result) {
+      const { hash, txId } = result;
+      connectorStore.log({
+        hash,
+        title: "Send several assets",
+        txId,
+      });
+    }
+  };
+
+  const handleSingleDelegation = async () => {
+    if (!storeState.wallet) {
+      return null;
+    }
+
+    const result = await singleDelegation({
+      connectedWallet: storeState.wallet,
+    });
+
+    if (result) {
+      const { hash, txId } = result;
+      connectorStore.log({
+        hash,
+        title: "Single delegation",
+        txId,
+      });
+    }
+  };
+
+  const handleSingleUndelegation = async () => {
+    if (!storeState.wallet) {
+      return null;
+    }
+
+    const result = await singleUndelegation({
+      connectedWallet: storeState.wallet,
+    });
+
+    if (result) {
+      const { hash, txId } = result;
+      connectorStore.log({
+        hash,
+        title: "Single undelegation",
+        txId,
+      });
+    }
   };
 
   const handleValidityInterval = async ({
@@ -81,42 +124,18 @@ export const WalletActions = () => {
   };
 
   return (
-    <div class="actions-container">
+    <div className="actions-container">
       <h3>Wallet actions</h3>
-      <button
-        class="wallet-button"
-        onClick={() => handleClick({ action: sendCoins, title: "Send coins" })}
-      >
+      <button className="wallet-button" onClick={handleSendCoins}>
         Send coins
       </button>
-      <button
-        class="wallet-button"
-        onClick={() =>
-          handleClick({
-            action: sendSeveralAssets,
-            title: "Send several assets",
-          })
-        }
-      >
+      <button className="wallet-button" onClick={handleSendSeveralAssets}>
         Send several assets
       </button>
-      <button
-        class="wallet-button"
-        onClick={() =>
-          handleClick({ action: singleDelegation, title: "Single delegation" })
-        }
-      >
+      <button className="wallet-button" onClick={handleSingleDelegation}>
         Single delegation
       </button>
-      <button
-        class="wallet-button"
-        onClick={() =>
-          handleClick({
-            action: singleUndelegation,
-            title: "Single undelegation",
-          })
-        }
-      >
+      <button className="wallet-button" onClick={handleSingleUndelegation}>
         Single undelegation
       </button>
       <button
