@@ -4,10 +4,12 @@ import {
   sendSeveralAssets,
   singleDelegation,
   singleUndelegation,
+  buildTxWithValidityInterval,
 } from "../../features";
 import { useEffect, useState } from "preact/hooks";
 
 import "./wallet-actions.css";
+import { ObservableWallet } from "@cardano-sdk/wallet";
 
 export const WalletActions = () => {
   const [storeState, setStoreState] = useState<Store>(
@@ -99,6 +101,28 @@ export const WalletActions = () => {
     }
   };
 
+  const handleValidityInterval = async ({
+    options,
+    title,
+  }: {
+    options: boolean;
+    title: string;
+  }) => {
+    if (!storeState.wallet) {
+      return null;
+    }
+    const { hash, txId } = await buildTxWithValidityInterval({
+      connectedWallet: storeState.wallet,
+      expired: options,
+    });
+
+    connectorStore.log({
+      hash,
+      title,
+      txId,
+    });
+  };
+
   return (
     <div className="actions-container">
       <h3>Wallet actions</h3>
@@ -113,6 +137,28 @@ export const WalletActions = () => {
       </button>
       <button className="wallet-button" onClick={handleSingleUndelegation}>
         Single undelegation
+      </button>
+      <button
+        class="wallet-button"
+        onClick={() =>
+          handleValidityInterval({
+            options: true,
+            title: "Tx with expired validity interval",
+          })
+        }
+      >
+        Send Tx with expired validity interval
+      </button>
+      <button
+        class="wallet-button"
+        onClick={() =>
+          handleValidityInterval({
+            options: false,
+            title: "Tx with unlimited validity interval",
+          })
+        }
+      >
+        Send Tx with unlimited validity interval
       </button>
     </div>
   );
