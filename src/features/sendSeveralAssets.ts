@@ -28,7 +28,7 @@ export const sendSeveralAssets = async ({
       assetMap.set(key, value);
     } else if (value > 1n && tokenCount < 1) {
       tokenCount++;
-      assetMap.set(key, 1000n);
+      assetMap.set(key, 1n);
     }
   }
 
@@ -38,6 +38,7 @@ export const sendSeveralAssets = async ({
   const output = await builder
     .buildOutput()
     .handle("rhys")
+    .assets(assetMap)
     .coin(10_000_000n)
     .build();
   const builtTx = builder.addOutput(output).build();
